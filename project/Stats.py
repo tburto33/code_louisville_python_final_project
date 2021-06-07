@@ -25,17 +25,42 @@ def ability_roll():
     return sum(total)
 
 
-def hp_roll(char_class):
-    if char_class.lower() == "barbarian":
-        hit_points = dice_type(1, 12)
-    if char_class.lower() == "fighter" or char_class == "paladin" or char_class == "ranger":
-        hit_points = dice_type(1, 10)
-    if char_class.lower() == "bard" or char_class == "cleric" or char_class == "druid" or char_class == "monk" or char_class == "rogue" or char_class == "warlock":
-        hit_points = dice_type(1, 8)
-    if char_class.lower() == "sorcerer" or char_class == "wizard":
-        hit_points = dice_type(1, 6)
+def ability_modifier(ability):
+    if ability == 1:
+        modifier = -5
+    if ability == 2 or ability == 3:
+        modifier = -4
+    if ability == 4 or ability == 5:
+        modifier = -3
+    if ability == 6 or ability == 7:
+        modifier = -2
+    if ability == 8 or ability == 9:
+        modifier = -1
+    if ability == 10 or ability == 11:
+        modifier = 0
+    if ability == 12 or ability == 13:
+        modifier = 1
+    if ability == 14 or ability == 15:
+        modifier = 2
+    if ability == 16 or ability == 17:
+        modifier = 3
+    if ability == 18 or ability == 19:
+        modifier = 4
+    if ability == 20:
+        modifier = 5
+    return modifier
 
-    return hit_points
+
+def starting_hp(char_class, cons_mod):
+    if char_class.lower() == "barbarian":
+        hit_points = 12
+    if char_class.lower() == "fighter" or char_class == "paladin" or char_class == "ranger":
+        hit_points = 10
+    if char_class.lower() == "bard" or char_class == "cleric" or char_class == "druid" or char_class == "monk" or char_class == "rogue" or char_class == "warlock":
+        hit_points = 8
+    if char_class.lower() == "sorcerer" or char_class == "wizard":
+        hit_points = 6
+    return hit_points + cons_mod
 
 
 def strength(race):
@@ -94,3 +119,17 @@ def charisma(race):
     else:
         char_total = ability_roll()
     return char_total
+
+
+# TODO: This is for leveling up a char's hp in future
+# def hp_roll(char_class):
+#     if char_class.lower() == "barbarian":
+#         hit_points = dice_type(1, 12)
+#     if char_class.lower() == "fighter" or char_class == "paladin" or char_class == "ranger":
+#         hit_points = dice_type(1, 10)
+#     if char_class.lower() == "bard" or char_class == "cleric" or char_class == "druid" or char_class == "monk" or char_class == "rogue" or char_class == "warlock":
+#         hit_points = dice_type(1, 8)
+#     if char_class.lower() == "sorcerer" or char_class == "wizard":
+#         hit_points = dice_type(1, 6)
+#
+#     return hit_points
