@@ -1,3 +1,4 @@
+# List of available races to choose from
 char_race = [
     "Dragonborn",
     "Dwarf",
@@ -10,6 +11,7 @@ char_race = [
     "Tiefling",
 ]
 
+# Dictionary of race descriptions
 races = {
     "dragonborn": "Dragonborn look very much like dragons standing erect in humanoid form,\n"
                   "though they lack wings or tail. \n"

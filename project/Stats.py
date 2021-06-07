@@ -1,13 +1,15 @@
 import random
+import Main
 
 
+# Dice roll simulator
 def dice_type(min, max):
     int(min)
     int(max)
     return random.randint(min, max)
 
 
-# TODO: add in mods from racial passives when chosen.
+# Calculates abilities before passives
 def ability_roll():
     total = []
     # Simulates rolling 4 1d6 dice
@@ -25,6 +27,7 @@ def ability_roll():
     return sum(total)
 
 
+# Determines modifiers based on ability rolls
 def ability_modifier(ability):
     if ability == 1:
         modifier = -5
@@ -51,6 +54,7 @@ def ability_modifier(ability):
     return modifier
 
 
+# Calculates starting HP based on class and constitution modifier
 def starting_hp(char_class, cons_mod):
     if char_class.lower() == "barbarian":
         hit_points = 12
@@ -63,6 +67,7 @@ def starting_hp(char_class, cons_mod):
     return hit_points + cons_mod
 
 
+# The following functions add racial passives into rolls
 def strength(race):
     if race == "dragonborn" or race == "half-orc":
         str_total = ability_roll() + 2
@@ -120,6 +125,28 @@ def charisma(race):
         char_total = ability_roll()
     return char_total
 
+
+# Selecting two abilities for Half-Elf racial passive
+def half_elf_racial_ability():
+    half_elf_ability_one = input("Pick first ability for +1: \n"
+                                 "Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma \n"
+                                 "> ")
+    half_elf_ability_two = input("Pick second ability for +1: \n"
+                                 "Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma \n"
+                                 "> ")
+    if half_elf_ability_one.lower() == "strength" or half_elf_ability_two.lower() == "strength":
+        new_ability_score = Main.strength_roll + 1
+    if half_elf_ability_one.lower() == "dexterity" or half_elf_ability_two.lower() == "dexterity":
+        new_ability_score = Main.dexterity_roll + 1
+    if half_elf_ability_one.lower() == "constitution" or half_elf_ability_two.lower() == "constitution":
+        new_ability_score = Main.constitution_roll + 1
+    if half_elf_ability_one.lower() == "intelligence" or half_elf_ability_two.lower() == "intelligence":
+        new_ability_score = Main.intelligence_roll + 1
+    if half_elf_ability_one.lower() == "wisdom" or half_elf_ability_two.lower() == "wisdom":
+        new_ability_score = Main.wisdom_roll + 1
+    if half_elf_ability_one.lower() == "charisma" or half_elf_ability_two.lower() == "charisma":
+        new_ability_score = Main.charisma_roll + 1
+    return new_ability_score
 
 # TODO: This is for leveling up a char's hp in future
 # def hp_roll(char_class):

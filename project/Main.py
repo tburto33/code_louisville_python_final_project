@@ -59,6 +59,12 @@ intelligence_roll = Stats.intelligence(race_selection.lower())
 wisdom_roll = Stats.wisdom(race_selection.lower())
 charisma_roll = Stats.charisma(race_selection.lower())
 
+# TODO: Test for successful implementation of function
+# This is if user selects Half-Elf for racial passive.
+# if class_selection.lower() == "half-elf":
+#     Stats.half_elf_racial_ability()
+
+
 print()
 print("You are playing a {} {} {}".format(sex.upper(), race_selection.upper(), class_selection.upper()))
 print()

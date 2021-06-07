@@ -1,3 +1,4 @@
+# List of classes available to choose from
 char_class = [
     "Barbarian",
     "Bard",
@@ -13,6 +14,7 @@ char_class = [
     "Wizard",
 ]
 
+# Dictionary of class descriptions
 classes = {
     "barbarian": "A fierce warrior of primitive background who can enter a battle rage. \n"
                  "Primary Ability: Strength \n"
