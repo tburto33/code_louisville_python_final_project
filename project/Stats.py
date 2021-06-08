@@ -1,5 +1,4 @@
 import random
-import Main
 
 
 # Dice roll simulator
