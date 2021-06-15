@@ -11,33 +11,39 @@ class Questions:
                 start = input("Would you like to get started? y/n \n"
                               "> ")
                 self = start.lower()
-                if self.lower() == "y":
+                if self == "y":
                     break
-                if self.lower() == "n":
+                if self == "n":
                     print("Maybe next time.")
                     sys.exit()
                 else:
-                    raise TypeError
-            except TypeError:
+                    raise err
+            except TypeError as err:
                 print("Invalid answer")
                 continue
 
-    def character_sex(self):
+
+class CharacterSex:
+
+    @classmethod
+    def select_sex(cls):
         while True:
             try:
-                sex = input("Would you like a male or female character? \n"
-                            "> ")
-                self = sex.lower()
-                if self == "male" or self == "female":
+                sex_selection = input("Would you like a male or female character? \n"
+                                      "> ")
+                if sex_selection.lower() == "male" or sex_selection.lower() == "female":
                     break
                 else:
                     raise TypeError
             except TypeError:
-                print("Invalid Answer. Type male or female only.")
+                print("Invalid Answer: Type male or female only.")
                 continue
+        return sex_selection
 
 
-question = Questions()
-question.start_creator()
-question.character_sex()
-print("You have chosen a {} character".format(question.character_sex()))
+questions = Questions()
+char_sex = CharacterSex()
+
+questions.start_creator()
+selected_sex = char_sex.select_sex()
+print("You have chosen a {} character.".format(selected_sex))
