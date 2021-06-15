@@ -1,32 +1,43 @@
-import Stats
-import Class
-import Races
-
 # THIS IS A PLAY AROUND AREA FOR CREATING FUNCTIONS AND THINGS BEFORE IMPLEMENTATION
 # WILL NOT BE IN FINAL PROJECT
+import sys
 
-# def ability_modifier(ability):
-#     if ability == 1:
-#         modifier = -5
-#     if ability == 2 or ability == 3:
-#         modifier = -4
-#     if ability == 4 or ability == 5:
-#         modifier = -3
-#     if ability == 6 or ability == 7:
-#         modifier = -2
-#     if ability == 8 or ability == 9:
-#         modifier = -1
-#     if ability == 10 or ability == 11:
-#         modifier = 0
-#     if ability == 12 or ability == 13:
-#         modifier = 1
-#     if ability == 14 or ability == 15:
-#         modifier = 2
-#     if ability == 16 or ability == 17:
-#         modifier = 3
-#     if ability == 18 or ability == 19:
-#         modifier = 4
-#     if ability == 20:
-#         modifier = 5
-#     return modifier
 
+class Questions:
+
+    def start_creator(self):
+        while True:
+            try:
+                start = input("Would you like to get started? y/n \n"
+                              "> ")
+                self = start.lower()
+                if self.lower() == "y":
+                    break
+                if self.lower() == "n":
+                    print("Maybe next time.")
+                    sys.exit()
+                else:
+                    raise TypeError
+            except TypeError:
+                print("Invalid answer")
+                continue
+
+    def character_sex(self):
+        while True:
+            try:
+                sex = input("Would you like a male or female character? \n"
+                            "> ")
+                self = sex.lower()
+                if self == "male" or self == "female":
+                    break
+                else:
+                    raise TypeError
+            except TypeError:
+                print("Invalid Answer. Type male or female only.")
+                continue
+
+
+question = Questions()
+question.start_creator()
+question.character_sex()
+print("You have chosen a {} character".format(question.character_sex()))
