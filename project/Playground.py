@@ -11,10 +11,10 @@ def start_creator():
         try:
             start = input("Would you like to get started? y/n \n"
                           "> ")
-            self = start.lower()
-            if self == "y":
+            start_response = start.lower()
+            if start_response == "y":
                 break
-            if self == "n":
+            if start_response == "n":
                 print("Maybe next time.")
                 sys.exit()
             else:
@@ -29,14 +29,14 @@ def select_sex():
         try:
             sex_selection = input("Would you like a male or female character? \n"
                                   "> ")
-            if sex_selection.lower() == "male" or sex_selection.lower() == "female":
-                break
+            sex_selection_input = sex_selection.lower()
+            if sex_selection_input == "male" or sex_selection_input == "female":
+                return sex_selection
             else:
                 raise TypeError
         except TypeError:
             print("Invalid Answer: Type male or female only.")
             continue
-    return sex_selection
 
 
 def name_character():
@@ -47,7 +47,7 @@ def name_character():
             validate_char_name = input("Are you sure you want to name your character {}? y/n \n"
                                        "> ".format(char_name))
             if validate_char_name.lower() == "y":
-                break
+                return char_name
             elif validate_char_name.lower() == "n":
                 print("No problem, let's try another name.")
                 continue
@@ -56,7 +56,6 @@ def name_character():
         except TypeError:
             print("Invalid response, y/n only.")
             continue
-    return char_name
 
 
 def select_race():
@@ -71,29 +70,28 @@ def select_race():
                                 "> ")
             if choose_race.lower() in Races.races:
                 print(Races.races[choose_race.lower()])
-                validate_race_selection()
+                validate_race_selection(choose_race)
                 break
             else:
                 raise TypeError
         except TypeError:
             print("Invalid Response, check spelling and try again.")
             continue
-    return choose_race
 
 
-def validate_race_selection():
+def validate_race_selection(chosen_race):
     while True:
         try:
-            verify_race = input("Is this the race you want to be? y/n \n"
-                                "> ")
+            verify_race = input("Is {} the race you want to be? y/n \n"
+                                "> ".format(chosen_race))
             if verify_race.lower() == "y":
-                break
+                return chosen_race.upper()
             elif verify_race.lower() == "n":
                 print("Let's find you another race.")
                 select_race()
                 break
             else:
-                raise TypeError("Invalid Response, y/n only")
+                raise TypeError
         except TypeError:
             print("Invalid Response, y/n only")
             continue
