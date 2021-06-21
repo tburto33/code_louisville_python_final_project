@@ -24,7 +24,7 @@ def start_creator():
             continue
 
 
-def select_sex():
+def select_character_sex():
     while True:
         try:
             sex_selection = input("Would you like a male or female character? \n"
@@ -44,8 +44,8 @@ def name_character():
         try:
             char_name = input("What do you want to name your character? \n"
                               "> ")
-            validate_char_name = input("Are you sure you want to name your character {}? y/n \n"
-                                       "> ".format(char_name))
+            validate_char_name = input(f"Are you sure you want to name your character {char_name}? y/n \n"
+                                       "> ")
             if validate_char_name.lower() == "y":
                 return char_name
             elif validate_char_name.lower() == "n":
@@ -58,7 +58,7 @@ def name_character():
             continue
 
 
-def select_race():
+def select_character_race():
     while True:
         try:
             print("--------------")
@@ -70,28 +70,56 @@ def select_race():
                                 "> ")
             if choose_race.lower() in Races.races:
                 print(Races.races[choose_race.lower()])
-                validate_race_selection(choose_race)
-                break
+                verify_race = input(f"Is {choose_race} the race you want to be? y/n \n"
+                                    f"> ")
+                if verify_race.lower() == "y":
+                    return choose_race
+                elif verify_race.lower() == "n":
+                    print("Let's find you another race.")
+                    continue
+                else:
+                    raise TypeError
             else:
                 raise TypeError
         except TypeError:
-            print("Invalid Response, check spelling and try again.")
+            print("Invalid Response.")
             continue
 
 
-def validate_race_selection(chosen_race):
+def select_character_clss():
     while True:
         try:
-            verify_race = input("Is {} the race you want to be? y/n \n"
-                                "> ".format(chosen_race))
-            if verify_race.lower() == "y":
-                return chosen_race.upper()
-            elif verify_race.lower() == "n":
-                print("Let's find you another race.")
-                select_race()
-                break
+            print("---------------")
+            print("CLASS SELECTION")
+            print("---------------")
+            print("\n".join(Class.char_class))
+
+            choose_clss = input("What class would you like to play? \n"
+                                "> ")
+            if choose_clss.lower() in Class.classes:
+                print(Class.classes[choose_clss.lower()])
+                verify_clss = input(f"Is {choose_clss} the class you want to play? y/n \n"
+                                    f"> ")
+                if verify_clss.lower() == "y":
+                    return choose_clss
+                elif verify_clss.lower() == "n":
+                    print("Let's find you another class.")
+                    continue
+                else:
+                    raise TypeError
             else:
                 raise TypeError
         except TypeError:
-            print("Invalid Response, y/n only")
+            print("Invalid Response")
             continue
+
+
+def character_ablility_rolls(char_race):
+    strength_roll = Stats.strength(char_race)
+    dexterity_roll = Stats.dexterity(char_race)
+    constitution_roll = Stats.constitution(char_race)
+    intelligence_roll = Stats.intelligence(char_race)
+    wisdom_roll = Stats.wisdom(char_race)
+    charisma_roll = Stats.charisma(char_race)
+
+    return strength_roll, dexterity_roll, constitution_roll, intelligence_roll, wisdom_roll, charisma_roll

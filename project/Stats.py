@@ -2,10 +2,10 @@ import random
 
 
 # Dice roll simulator
-def dice_type(min, max):
-    int(min)
-    int(max)
-    return random.randint(min, max)
+def dice_type(min_num, max_num):
+    int(min_num)
+    int(max_num)
+    return random.randint(min_num, max_num)
 
 
 # Calculates abilities before passives
@@ -28,6 +28,8 @@ def ability_roll():
 
 # Determines modifiers based on ability rolls
 def ability_modifier(ability):
+    modifier = 0
+
     if ability == 1:
         modifier = -5
     if ability == 2 or ability == 3:
@@ -55,6 +57,8 @@ def ability_modifier(ability):
 
 # Calculates starting HP based on class and constitution modifier
 def starting_hp(char_class, cons_mod):
+    hit_points = 0
+
     if char_class.lower() == "barbarian":
         hit_points = 12
     if char_class.lower() == "fighter" or char_class == "paladin" or char_class == "ranger":

@@ -7,4 +7,6 @@ Playground.start_creator()
 char_sex = Playground.select_sex()
 char_name = Playground.name_character()
 char_race = Playground.select_race()
-print("You are playing a {} character, named {}. They are a {}!".format(char_sex, char_name, char_race))
+char_clss = Playground.select_clss()
+
+print(f"You are playing a {char_sex} character, named {char_name}. They are a {char_race} {char_clss}!")
