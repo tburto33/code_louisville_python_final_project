@@ -1,7 +1,9 @@
 import Stats
-import Class
-import Races
+from project.Data import CharRaces, CharClass
 import sys
+
+# THIS WAS MY ORIGINAL CODE WHEN STARTING THIS PROJECT FOR CODE LOUISVILLE PYTHON FINAL
+# LEFT IT TO SHOW HOW MY CODE HAS EVOLVED IN PYTHON
 
 print("Welcome to my DnD Character Creator!")
 start = input("Ready to get started? y/n \n"
@@ -21,10 +23,10 @@ while True:
     print("--------------")
     print("RACE SELECTION")
     print("--------------")
-    print("\n".join(Races.char_race))
+    print("\n".join(CharRaces.char_race))
     race_selection = input("Which race would you like to be? \n"
                            "> ")
-    print(Races.races[race_selection.lower()])
+    print(CharRaces.races[race_selection.lower()])
     verify_race = input("Is this the race you want to be? y/n \n"
                         "> ")
     if verify_race.lower() == "y":
@@ -38,10 +40,10 @@ while True:
     print("---------------")
     print("CLASS SELECTION")
     print("---------------")
-    print("\n".join(Class.char_class))
+    print("\n".join(CharClass.char_class))
     class_selection = input("What class would you like to play? \n"
                             "> ")
-    print(Class.classes[class_selection.lower()])
+    print(CharClass.classes[class_selection.lower()])
     verify_class = input("Is this the class you want to be? y/n \n"
                          "> ")
     if verify_class.lower() == "y":
