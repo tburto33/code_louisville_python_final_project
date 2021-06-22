@@ -19,5 +19,3 @@ user_char = Hero.Character(char_sex.upper(),
 user_char.print_character()
 Stats.print_abilities_and_mods()
 Stats.print_skills()
-
-

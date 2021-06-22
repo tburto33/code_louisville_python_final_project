@@ -1,16 +1,14 @@
 from project.Helpers import Helpers
 
-helpers = Helpers
-
 
 # Calculates abilities before passives
 def ability_roll():
     total = []
     # Simulates rolling 4 1d6 dice
-    roll_one = helpers.dice_roll(1, 6)
-    roll_two = helpers.dice_roll(1, 6)
-    roll_three = helpers.dice_roll(1, 6)
-    roll_four = helpers.dice_roll(1, 6)
+    roll_one = Helpers.dice_roll(1, 6)
+    roll_two = Helpers.dice_roll(1, 6)
+    roll_three = Helpers.dice_roll(1, 6)
+    roll_four = Helpers.dice_roll(1, 6)
     # Places 4 rolls in list and removes lowest before totaling
     total.append(roll_one)
     total.append(roll_two)
