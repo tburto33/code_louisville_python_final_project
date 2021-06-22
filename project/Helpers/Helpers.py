@@ -2,6 +2,7 @@ import sys
 import random
 import os
 import platform
+from project import Hero
 
 
 # Starts character creator
@@ -12,7 +13,17 @@ def start_creator():
                                         "> ")
             start_response = start_creator_input.lower()
             if start_response == "y":
-                break
+                random_or_make_input = input("Do you want a random character or do you want to create one? "
+                                             "random/create \n"
+                                             "> ")
+                if random_or_make_input.lower() == "random":
+                    Hero.create_random_character()
+                    sys.exit()
+                if random_or_make_input.lower() == "create":
+                    break
+                else:
+                    print("Invalid Response")
+                    continue
             if start_response == "n":
                 print("Maybe next time.")
                 sys.exit()

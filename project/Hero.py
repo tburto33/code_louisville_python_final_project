@@ -1,4 +1,6 @@
 from project.Data import CharClass, CharRaces
+import random
+from project import Stats
 
 
 class Character:
@@ -111,3 +113,22 @@ def select_character_clss():
         except ValueError:
             print("Invalid Response")
             continue
+
+
+def create_random_character():
+    char_name = select_character_name()
+    sexes = ["male", "female"]
+    char_sex = random.choice(sexes)
+    char_race = random.choice(CharRaces.char_race)
+    char_clss = random.choice(CharClass.char_class)
+    Stats.character_ability_rolls(char_race)
+    Stats.character_modifiers()
+    char_hp = Stats.starting_hp(char_clss)
+    random_char = Character(char_sex.upper(),
+                            char_name.upper(),
+                            char_race.upper(),
+                            char_clss.upper(),
+                            char_hp)
+    random_char.print_character()
+    Stats.print_abilities_and_mods()
+    Stats.print_skills()
