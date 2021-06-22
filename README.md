@@ -1,7 +1,9 @@
 # code_louisville_python_final_project
 My final project for the Code Louisville Python course.
 For new DnD players building a character can be the hardest step when getting started. I created a small console application that will make that process easier.
-Using a few simple methods/functions, some dicts, user input, and DnD wizardry I have a basic character creator. Choose a race and class based on descriptions provided, and it will give you stats at the end of the program to use for your campaign.
+Using a few simple methods/functions, some dicts, user input, and DnD wizardry I have a basic character creator. Choose your name, sex, race and class (based on descriptions provided), and it will give you stats at the end of the program to use for your campaign.
+
+***Random Character Creation option still in progress.*** 
 
 Features:
 - Character Class
