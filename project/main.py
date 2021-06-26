@@ -1,6 +1,6 @@
 import stats
 import character
-from project.Helpers import helpers
+from project.helpers import helpers
 
 print("Welcome to my DnD Character Generator!")
 helpers.start_creator()

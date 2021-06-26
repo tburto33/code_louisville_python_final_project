@@ -1,4 +1,4 @@
-from project.Helpers import helpers
+from project.helpers import helpers
 
 
 # Calculates abilities before passives

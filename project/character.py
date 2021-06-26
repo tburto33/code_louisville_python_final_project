@@ -1,4 +1,4 @@
-from project.Data import char_class, char_races
+from project.data import char_class, char_races
 import random
 from project import stats
 
