@@ -237,27 +237,6 @@ def print_skills():
     Survival: {char_modifiers["wis"]}    
     """)
 
-# Selecting two abilities for Half-Elf racial passive
-# def half_elf_racial_ability():
-#     half_elf_ability_one = input("Pick first ability for +1: \n"
-#                                  "Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma \n"
-#                                  "> ")
-#     half_elf_ability_two = input("Pick second ability for +1: \n"
-#                                  "Strength, Dexterity, Constitution, Intelligence, Wisdom, or Charisma \n"
-#                                  "> ")
-#     if half_elf_ability_one.lower() == "strength" or half_elf_ability_two.lower() == "strength":
-#         new_ability_score = Main.strength_roll + 1
-#     if half_elf_ability_one.lower() == "dexterity" or half_elf_ability_two.lower() == "dexterity":
-#         new_ability_score = Main.dexterity_roll + 1
-#     if half_elf_ability_one.lower() == "constitution" or half_elf_ability_two.lower() == "constitution":
-#         new_ability_score = Main.constitution_roll + 1
-#     if half_elf_ability_one.lower() == "intelligence" or half_elf_ability_two.lower() == "intelligence":
-#         new_ability_score = Main.intelligence_roll + 1
-#     if half_elf_ability_one.lower() == "wisdom" or half_elf_ability_two.lower() == "wisdom":
-#         new_ability_score = Main.wisdom_roll + 1
-#     if half_elf_ability_one.lower() == "charisma" or half_elf_ability_two.lower() == "charisma":
-#         new_ability_score = Main.charisma_roll + 1
-#     return new_ability_score
 
 # TODO: This is for leveling up a char's hp in future
 # def hp_roll(char_class):
