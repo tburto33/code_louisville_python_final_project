@@ -1,6 +1,6 @@
-from project.Data import CharClass, CharRaces
+from project.Data import char_class, char_races
 import random
-from project import Stats
+from project import stats
 
 
 class Character:
@@ -64,12 +64,12 @@ def select_character_race():
             print("--------------")
             print("RACE SELECTION")
             print("--------------")
-            print("\n".join(CharRaces.char_race))
+            print("\n".join(char_races.char_race))
 
             select_race_input = input("What race would you like to be? \n"
                                       "> ")
-            if select_race_input.lower() in CharRaces.races:
-                print(CharRaces.races[select_race_input.lower()])
+            if select_race_input.lower() in char_races.races:
+                print(char_races.races[select_race_input.lower()])
                 verify_race_input = input(f"Is {select_race_input} the race you want to be? y/n \n"
                                           f"> ")
                 if verify_race_input.lower() == "y":
@@ -93,12 +93,12 @@ def select_character_clss():
             print("---------------")
             print("CLASS SELECTION")
             print("---------------")
-            print("\n".join(CharClass.char_class))
+            print("\n".join(char_class.char_class))
 
             selected_clss_input = input("What class would you like to play? \n"
                                         "> ")
-            if selected_clss_input.lower() in CharClass.classes:
-                print(CharClass.classes[selected_clss_input.lower()])
+            if selected_clss_input.lower() in char_class.classes:
+                print(char_class.classes[selected_clss_input.lower()])
                 verify_clss_input = input(f"Is {selected_clss_input} the class you want to play? y/n \n"
                                           f"> ")
                 if verify_clss_input.lower() == "y":
@@ -119,16 +119,18 @@ def create_random_character():
     char_name = select_character_name()
     sexes = ["male", "female"]
     char_sex = random.choice(sexes)
-    char_race = random.choice(CharRaces.char_race)
-    char_clss = random.choice(CharClass.char_class)
-    Stats.character_ability_rolls(char_race)
-    Stats.character_modifiers()
-    char_hp = Stats.starting_hp(char_clss)
+    char_race = random.choice(char_races.char_race).lower()
+    char_clss = random.choice(char_class.char_class).lower()
+    stats.set_ability_rolls(char_race)
+    stats.set_ability_modifiers()
+    if char_race == "half-elf":
+        stats.half_elf_racial()
+    char_hp = stats.set_starting_hp(char_clss)
     random_char = Character(char_sex.upper(),
                             char_name.upper(),
                             char_race.upper(),
                             char_clss.upper(),
                             char_hp)
     random_char.print_character()
-    Stats.print_abilities_and_mods()
-    Stats.print_skills()
+    stats.print_abilities_and_mods()
+    stats.print_skills()

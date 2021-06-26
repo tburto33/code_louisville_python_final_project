@@ -4,7 +4,7 @@ char_race = [
     "Dwarf",
     "Elf",
     "Gnome",
-    "High-Elf",
+    "Half-Elf",
     "Halfling",
     "Half-Orc",
     "Human",

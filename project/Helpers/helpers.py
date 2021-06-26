@@ -2,7 +2,7 @@ import sys
 import random
 import os
 import platform
-from project import Hero
+from project import character
 
 
 # Starts character creator
@@ -17,7 +17,7 @@ def start_creator():
                                              "random/create \n"
                                              "> ")
                 if random_or_make_input.lower() == "random":
-                    Hero.create_random_character()
+                    character.create_random_character()
                     sys.exit()
                 if random_or_make_input.lower() == "create":
                     break
@@ -39,6 +39,17 @@ def dice_roll(min_num, max_num):
     int(min_num)
     int(max_num)
     return random.randint(min_num, max_num)
+
+
+# List for half_elf_passive in stats
+half_elf_ability = [
+        "Strength(str)",
+        "Dexterity(dex)",
+        "Constitution(cons)",
+        "Intelligence(int)",
+        "Wisdom(wis)",
+        "Charisma(char)",
+    ]
 
 
 # Clears console after asking questions

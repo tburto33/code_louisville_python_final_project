@@ -1,14 +1,14 @@
-from project.Helpers import Helpers
+from project.Helpers import helpers
 
 
 # Calculates abilities before passives
 def ability_roll():
     total = []
     # Simulates rolling 4 1d6 dice
-    roll_one = Helpers.dice_roll(1, 6)
-    roll_two = Helpers.dice_roll(1, 6)
-    roll_three = Helpers.dice_roll(1, 6)
-    roll_four = Helpers.dice_roll(1, 6)
+    roll_one = helpers.dice_roll(1, 6)
+    roll_two = helpers.dice_roll(1, 6)
+    roll_three = helpers.dice_roll(1, 6)
+    roll_four = helpers.dice_roll(1, 6)
     # Places 4 rolls in list and removes lowest before totaling
     total.append(roll_one)
     total.append(roll_two)
@@ -48,35 +48,28 @@ def ability_modifier(ability):
     return modifier
 
 
-def character_ability_rolls(char_race):
-    # Calculates ability rolls with racial passives
-    strength_roll = strength(char_race)
-    dexterity_roll = dexterity(char_race)
-    constitution_roll = constitution(char_race)
-    intelligence_roll = intelligence(char_race)
-    wisdom_roll = wisdom(char_race)
-    charisma_roll = charisma(char_race)
-    # Stores ability rolls into char_ability_dict
-    char_ability_dict.update({"str": strength_roll})
-    char_ability_dict.update({"dex": dexterity_roll})
-    char_ability_dict.update({"cons": constitution_roll})
-    char_ability_dict.update({"int": intelligence_roll})
-    char_ability_dict.update({"wis": wisdom_roll})
-    char_ability_dict.update({"char": charisma_roll})
+# Rolls for each ability, adds racial passives if needed.
+def set_ability_rolls(char_race):
+    char_abilities.update({"str": strength(char_race)})
+    char_abilities.update({"dex": dexterity(char_race)})
+    char_abilities.update({"cons": constitution(char_race)})
+    char_abilities.update({"int": intelligence(char_race)})
+    char_abilities.update({"wis": wisdom(char_race)})
+    char_abilities.update({"char": charisma(char_race)})
 
 
-def character_modifiers():
-    # Calculates modifiers from ability rolls and then stores them into char_modifier_dict
-    char_modifier_dict.update({"str_mod": ability_modifier(char_ability_dict["str"])})
-    char_modifier_dict.update({"dex_mod": ability_modifier(char_ability_dict["dex"])})
-    char_modifier_dict.update({"cons_mod": ability_modifier(char_ability_dict["cons"])})
-    char_modifier_dict.update({"int_mod": ability_modifier(char_ability_dict["int"])})
-    char_modifier_dict.update({"wis_mod": ability_modifier(char_ability_dict["wis"])})
-    char_modifier_dict.update({"char_mod": ability_modifier(char_ability_dict["char"])})
+# Calculates modifiers from ability rolls and then stores them into char_modifier_dict
+def set_ability_modifiers():
+    char_modifiers.update({"str": ability_modifier(char_abilities["str"])})
+    char_modifiers.update({"dex": ability_modifier(char_abilities["dex"])})
+    char_modifiers.update({"cons": ability_modifier(char_abilities["cons"])})
+    char_modifiers.update({"int": ability_modifier(char_abilities["int"])})
+    char_modifiers.update({"wis": ability_modifier(char_abilities["wis"])})
+    char_modifiers.update({"char": ability_modifier(char_abilities["char"])})
 
 
 # Stores character ability rolls
-char_ability_dict = {
+char_abilities = {
     "str": 0,
     "dex": 0,
     "cons": 0,
@@ -86,30 +79,66 @@ char_ability_dict = {
 }
 
 # Stores character modifiers
-char_modifier_dict = {
-    "str_mod": 0,
-    "dex_mod": 0,
-    "cons_mod": 0,
-    "int_mod": 0,
-    "wis_mod": 0,
-    "char_mod": 0,
+char_modifiers = {
+    "str": 0,
+    "dex": 0,
+    "cons": 0,
+    "int": 0,
+    "wis": 0,
+    "char": 0,
 }
 
 
 # Calculates starting HP based on class and constitution modifier
-def starting_hp(char_class):
-    cons_mod = char_modifier_dict["cons_mod"]
-    hit_points = 0
+def set_starting_hp(char_class):
+    cons_mod = char_modifiers["cons"]
+    hit_points = {
+        "barbarian": 12,
+        "fighter": 10,
+        "paladin": 10,
+        "ranger": 10,
+        "bard": 8,
+        "cleric": 8,
+        "druid": 8,
+        "monk": 8,
+        "rogue": 8,
+        "warlock": 8,
+        "sorcerer": 6,
+        "wizard": 6,
+    }
+    return hit_points[char_class] + cons_mod
 
-    if char_class.lower() == "barbarian":
-        hit_points = 12
-    if char_class.lower() == "fighter" or char_class == "paladin" or char_class == "ranger":
-        hit_points = 10
-    if char_class.lower() == "bard" or char_class == "cleric" or char_class == "druid" or char_class == "monk" or char_class == "rogue" or char_class == "warlock":
-        hit_points = 8
-    if char_class.lower() == "sorcerer" or char_class == "wizard":
-        hit_points = 6
-    return hit_points + cons_mod
+
+def half_elf_racial():
+    print("Half-Elf racial ability requires you pick 2 abilities to add +1:")
+    print("\n".join(helpers.half_elf_ability))
+    while True:
+        try:
+            ability_one_input = input("Pick first ability for +1: \n"
+                                      "(Enter Abbreviation)> ")
+            ability_one = ability_one_input.lower()
+            if ability_one in char_abilities:
+                char_abilities[ability_one] += 1
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print("Invalid Response")
+            continue
+    while True:
+        try:
+            ability_two_input = input("Pick second ability for +1: \n"
+                                      "(Enter Abbreviation)> ")
+            ability_two = ability_two_input.lower()
+            if ability_two in char_abilities:
+                char_abilities[ability_two] += 1
+                set_ability_modifiers()
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print("Invalid Response")
+            continue
 
 
 # The following functions add racial passives into ability rolls
@@ -175,12 +204,12 @@ def charisma(race):
 def print_abilities_and_mods():
     print(f""" Your character has the following abilities:
     
-    Strength: {char_ability_dict["str"]}  Mod = {char_modifier_dict["str_mod"]}
-    Dexterity: {char_ability_dict["dex"]}  Mod = {char_modifier_dict["dex_mod"]}
-    Constitution: {char_ability_dict["cons"]}  Mod = {char_modifier_dict["cons_mod"]}
-    Intelligence: {char_ability_dict["int"]}  Mod = {char_modifier_dict["int_mod"]}
-    Wisdom: {char_ability_dict["wis"]}  Mod = {char_modifier_dict["wis_mod"]}
-    Charisma: {char_ability_dict["char"]}  Mod = {char_modifier_dict["char_mod"]}
+    Strength: {char_abilities["str"]}  Mod = {char_modifiers["str"]}
+    Dexterity: {char_abilities["dex"]}  Mod = {char_modifiers["dex"]}
+    Constitution: {char_abilities["cons"]}  Mod = {char_modifiers["cons"]}
+    Intelligence: {char_abilities["int"]}  Mod = {char_modifiers["int"]}
+    Wisdom: {char_abilities["wis"]}  Mod = {char_modifiers["wis"]}
+    Charisma: {char_abilities["char"]}  Mod = {char_modifiers["char"]}
     """)
 
 
@@ -188,24 +217,24 @@ def print_abilities_and_mods():
 def print_skills():
     print(f""" Your character has the following skills:
 
-    Acrobatics: {char_modifier_dict["dex_mod"]}
-    Animal Handling: {char_modifier_dict["wis_mod"]}
-    Arcana: {char_modifier_dict["int_mod"]}
-    Athletics: {char_modifier_dict["str_mod"]}
-    Deception: {char_modifier_dict["char_mod"]}
-    History: {char_modifier_dict["int_mod"]}
-    Insight: {char_modifier_dict["wis_mod"]}
-    Intimidation: {char_modifier_dict["char_mod"]}
-    Investigation: {char_modifier_dict["int_mod"]}
-    Medicine: {char_modifier_dict["wis_mod"]}
-    Nature: {char_modifier_dict["int_mod"]}
-    Perception: {char_modifier_dict["wis_mod"]}
-    Performance: {char_modifier_dict["char_mod"]}
-    Persuasion: {char_modifier_dict["char_mod"]}
-    Religion: {char_modifier_dict["int_mod"]}
-    Sleight of Hand: {char_modifier_dict["dex_mod"]}
-    Stealth: {char_modifier_dict["dex_mod"]}
-    Survival: {char_modifier_dict["wis_mod"]}    
+    Acrobatics: {char_modifiers["dex"]}
+    Animal Handling: {char_modifiers["wis"]}
+    Arcana: {char_modifiers["int"]}
+    Athletics: {char_modifiers["str"]}
+    Deception: {char_modifiers["char"]}
+    History: {char_modifiers["int"]}
+    Insight: {char_modifiers["wis"]}
+    Intimidation: {char_modifiers["char"]}
+    Investigation: {char_modifiers["int"]}
+    Medicine: {char_modifiers["wis"]}
+    Nature: {char_modifiers["int"]}
+    Perception: {char_modifiers["wis"]}
+    Performance: {char_modifiers["char"]}
+    Persuasion: {char_modifiers["char"]}
+    Religion: {char_modifiers["int"]}
+    Sleight of Hand: {char_modifiers["dex"]}
+    Stealth: {char_modifiers["dex"]}
+    Survival: {char_modifiers["wis"]}    
     """)
 
 # Selecting two abilities for Half-Elf racial passive
