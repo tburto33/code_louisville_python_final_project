@@ -1,4 +1,4 @@
-import stats
+from project.main import stats
 from project.Data import char_races, char_class
 import sys
 

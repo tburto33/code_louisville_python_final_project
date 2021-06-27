@@ -1,11 +1,8 @@
 # THIS IS A PLAY AROUND AREA FOR CREATING FUNCTIONS AND THINGS BEFORE IMPLEMENTATION
 # WILL NOT BE IN FINAL PROJECT
-from project import character
-from project.data import char_races, char_class
-import random
 import sys
 from fpdf import FPDF
-from project import stats
+from project.main import stats
 
 
 def export_to_pdf(char_name, char_sex, char_race, char_class, hit_points):

@@ -1,5 +1,5 @@
 from project.data import char_class, char_races
-from project import stats
+from project.main import stats
 from project.helpers import helpers
 import random
 

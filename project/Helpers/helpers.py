@@ -3,7 +3,7 @@ import random
 import os
 import platform
 from fpdf import FPDF
-from project import character, stats
+from project.main import character, stats
 
 
 # Starts character creator
