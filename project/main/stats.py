@@ -1,4 +1,4 @@
-from project.helpers import helpers
+import helpers
 
 
 # Calculates abilities before passives
@@ -236,7 +236,6 @@ def print_skills():
     Stealth: {char_modifiers["dex"]}
     Survival: {char_modifiers["wis"]}    
     """)
-
 
 # TODO: This is for leveling up a char's hp in future
 # def hp_roll(char_class):

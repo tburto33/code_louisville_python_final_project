@@ -1,9 +1,10 @@
-import sys
-import random
 import os
 import platform
+import random
+import sys
 from fpdf import FPDF
-from project.main import character, stats
+import character
+import stats
 
 
 # Starts character creator

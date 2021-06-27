@@ -1,7 +1,7 @@
-from project.data import char_class, char_races
-from project.main import stats
-from project.helpers import helpers
 import random
+import helpers
+import stats
+from project.data import char_class, char_races
 
 
 class Character:
