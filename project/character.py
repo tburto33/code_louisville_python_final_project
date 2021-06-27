@@ -1,6 +1,7 @@
 from project.data import char_class, char_races
-import random
 from project import stats
+from project.helpers import helpers
+import random
 
 
 class Character:
@@ -134,3 +135,4 @@ def create_random_character():
     random_char.print_character()
     stats.print_abilities_and_mods()
     stats.print_skills()
+    helpers.export_to_pdf(char_name.upper(), char_sex.upper(), char_race.upper(), char_clss.upper(), char_hp)

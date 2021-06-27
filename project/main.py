@@ -1,8 +1,6 @@
 import stats
 import character
 from project.helpers import helpers
-from fpdf import FPDF
-from helpers import playground
 
 print("Welcome to my DnD Character Generator!")
 helpers.start_creator()
@@ -23,8 +21,8 @@ user_char = character.Character(char_sex.upper(),
 user_char.print_character()
 stats.print_abilities_and_mods()
 stats.print_skills()
-playground.export_to_pdf(char_name.upper(),
-                         char_sex.upper(),
-                         char_race.upper(),
-                         char_clss.upper(),
-                         char_hp)
+helpers.export_to_pdf(char_name.upper(),
+                      char_sex.upper(),
+                      char_race.upper(),
+                      char_clss.upper(),
+                      char_hp)
