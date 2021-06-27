@@ -2,7 +2,7 @@
 # WILL NOT BE IN FINAL PROJECT
 import sys
 from fpdf import FPDF
-from project.main import stats
+from project import stats
 
 
 def export_to_pdf(char_name, char_sex, char_race, char_class, hit_points):
