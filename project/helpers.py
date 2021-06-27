@@ -108,7 +108,7 @@ def export_to_pdf(char_name, char_sex, char_race, char_class, hit_points):
                                    f"Sleight of Hand: {stats.char_modifiers['dex']}\n"
                                    f"Stealth: {stats.char_modifiers['dex']}\n"
                                    f"Survival: {stats.char_modifiers['wis']}\n"
-                                   f"Character created using DnD generator by Alex Burton"
+                                   f"Character created using DnD generator by Alex Burton "
                                    f"https://github.com/tburto33/",
                                align='L')
                 pdf.output("character_sheet.pdf", dest='F')
