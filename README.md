@@ -6,11 +6,12 @@ Using a few simple methods/functions, some dicts, user input, and DnD wizardry I
 ***PDF option works and can be found in project folder after creation, but is still in progress.***
 
 ***Must be in venv to run:
-1) CD into project/venv/Scripts
-2) Type "activate" into command line
+1) CD into repofolder/venv/Scripts
+2) Type "activate.bat" or ".\activate"
 3) CD to project folder
 4) Type "python run.py"
 5) Make a character and have fun adventurer!***
+6) To exit venv: cd back to Scripts and type "deactivate"
  
 
 Code Louisville Python Course Final Features:
