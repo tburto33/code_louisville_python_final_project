@@ -5,7 +5,7 @@ Using a few simple methods/functions, some dicts, user input, and DnD wizardry I
 
 ***PDF option works and can be found in project folder after creation, but is still in progress.***
 
-***Must be in venv to run:
+***Must be in venv to run: (uses pipenv)
 1) CD into repofolder/venv/Scripts
 2) Type "activate.bat" or ".\activate"
 3) CD to project folder
